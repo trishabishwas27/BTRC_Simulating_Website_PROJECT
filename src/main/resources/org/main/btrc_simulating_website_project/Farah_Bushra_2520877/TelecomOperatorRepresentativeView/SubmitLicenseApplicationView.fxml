@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="631.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Farah_Bushra_2520877.TelecomOperatorRepresentive.SubmitLiscenseApplicationViewController">
+   <children>
+      <Text layoutX="106.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text fill="#b800117a" layoutX="92.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Submit Liscense Application Form" textAlignment="CENTER" wrappingWidth="586.1763916015625">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Line endX="710.0" endY="7.62939453125E-6" layoutX="106.0" layoutY="86.0" startX="-100.0" />
+      <Label layoutX="14.0" layoutY="123.0" text="Company Name ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="companyNameTextField" layoutX="154.0" layoutY="120.0" />
+      <Label layoutX="333.0" layoutY="123.0" text="Registration Number">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="registrationNumberTextField" layoutX="482.0" layoutY="120.0" />
+      <Label layoutX="14.0" layoutY="195.0" text="Contact Information">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="contactInformationTextField" layoutX="154.0" layoutY="192.0" />
+      <Label layoutX="335.0" layoutY="195.0" text="Liscense Type ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="liscenseTypeComboBox" layoutX="482.0" layoutY="192.0" prefWidth="150.0" />
+      <Label layoutX="14.0" layoutY="264.0" text="Reason For Applying">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="reasonForApplyingTextArea" layoutX="154.0" layoutY="256.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label layoutX="385.0" layoutY="264.0" text="Application Date">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="applicationDateDatePicker" layoutX="501.0" layoutY="262.0" />
+      <Label layoutX="386.0" layoutY="330.0" text="Application ID">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="386.0" layoutY="399.0" text="Application Status">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="applicationIdTextField" layoutX="507.0" layoutY="327.0" />
+      <TextField fx:id="applicationStatusTextFIeld" layoutX="514.0" layoutY="396.0" />
+      <Button layoutX="51.0" layoutY="514.0" mnemonicParsing="false" onAction="#SubmitApplicationOnAction" text="Submit Application">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="229.0" layoutY="514.0" mnemonicParsing="false" onAction="#BackToDashboardOnAction" text="Back To Dashboard">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <TextField fx:id="outputLabelTextField" layoutX="418.0" layoutY="516.0" prefHeight="87.0" prefWidth="408.0" />
+   </children>
+</AnchorPane>
