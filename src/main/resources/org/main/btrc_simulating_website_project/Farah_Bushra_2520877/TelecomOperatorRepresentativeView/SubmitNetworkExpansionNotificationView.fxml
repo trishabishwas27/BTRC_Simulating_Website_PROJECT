@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="624.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Farah_Bushra_2520877.TelecomOperatorRepresentive.SubmitNetworkExpansionNotificationViewController">
+   <children>
+      <Text fill="#611414" layoutX="59.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Submit Network Expansion Notification" textAlignment="CENTER" wrappingWidth="662.3765258789062">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <Line endX="729.0000610351562" endY="-7.600002288818359" layoutX="101.0" layoutY="70.0" startX="-100.0" />
+      <TextField fx:id="expansionAreaTextField" layoutX="155.0" layoutY="94.0" />
+      <Label layoutX="31.0" layoutY="97.0" text="Expansion Area">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="334.0" layoutY="97.0" text="Expansion Type">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="expansionTypeComboBox" layoutX="447.0" layoutY="95.0" prefWidth="150.0" />
+      <Label layoutX="31.0" layoutY="144.0" text="Number Of New Towers">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="notificationIdTextField" layoutX="416.0" layoutY="199.0" />
+      <Label layoutX="390.0" layoutY="144.0" text="Expected Starting Date">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="expectedStartingDateDatePicker" layoutX="548.0" layoutY="141.0" />
+      <Label layoutX="31.0" layoutY="202.0" text="Expansion Description">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="expansionDescriptionTextArea" layoutX="26.0" layoutY="233.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label layoutX="287.0" layoutY="202.0" text="Notification ID">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="287.0" layoutY="244.0" text="Notification Status">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="notificationStatusTextField" layoutX="416.0" layoutY="241.0" />
+      <Button layoutX="292.0" layoutY="327.0" mnemonicParsing="false" onAction="#SubmitNotificationOnAction" text="Submit Notification">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="496.0" layoutY="327.0" mnemonicParsing="false" onAction="#BackToDashBoardOnAction" text="Back To Dashboard">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <TextField fx:id="outputLabel" layoutX="31.0" layoutY="486.0" prefHeight="102.0" prefWidth="759.0" />
+      <TextField fx:id="numberOfNewTowersTextField" layoutX="194.0" layoutY="141.0" />
+   </children>
+</AnchorPane>
