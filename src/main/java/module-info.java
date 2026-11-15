@@ -8,6 +8,7 @@ module org.main.btrc_simulating_website_project {
     exports Farah_Bushra_2520877;
     opens Farah_Bushra_2520877 to javafx.fxml;
 
+
+
     opens Farah_Bushra_2520877.CitizenServiceUser to javafx.fxml;
-    opens Farah_Bushra_2520877.TelecomOperatorRepresentive to javafx.fxml;
 }
