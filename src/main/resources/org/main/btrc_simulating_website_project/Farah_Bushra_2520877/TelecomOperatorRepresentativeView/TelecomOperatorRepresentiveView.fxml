@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="693.0" prefWidth="841.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Farah_Bushra_2520877.TelecomOperatorRepresentive.TelecomOperatorRepresentiveViewController">
    <children>
-      <Text layoutX="219.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telecom Operator Representative">
+      <Text layoutX="219.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telecom Operator Representative Dashboard">
          <font>
             <Font size="24.0" />
          </font>
