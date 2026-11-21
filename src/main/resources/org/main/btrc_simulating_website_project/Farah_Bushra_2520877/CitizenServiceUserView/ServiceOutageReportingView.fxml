@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="853.0" prefWidth="887.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Farah_Bushra_2520877.CitizenServiceUser.ServiceOutageReportingViewController">
+   <children>
+      <Text fill="#b72a2a" layoutX="248.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Service Outage Reporting">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Text>
+      <Line endX="785.0000610351562" layoutX="101.0" layoutY="94.0" startX="-100.0" />
+      <Label layoutX="42.0" layoutY="131.0" text="Operator Name">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="operatorNameComboBox" layoutX="229.0" layoutY="132.0" prefWidth="150.0" />
+      <TextField fx:id="outageStartTimeTextField" layoutX="222.0" layoutY="325.0" />
+      <Label layoutX="42.0" layoutY="192.0" text="Service Type">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="serviceTypeComboBox" layoutX="229.0" layoutY="193.0" prefWidth="150.0" />
+      <Label layoutX="42.0" layoutY="254.0" text="Outage Start Date">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="outageStartDateDatePicker" layoutX="222.0" layoutY="255.0" />
+      <Label layoutX="42.0" layoutY="324.0" text="Outage Start Time">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="locationTextField" layoutX="222.0" layoutY="399.0" />
+      <Label layoutX="42.0" layoutY="398.0" text="Area/Location">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="48.0" layoutY="456.0" text="Outage Description">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="outageDescriptionTextArea" layoutX="222.0" layoutY="456.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button layoutX="99.0" layoutY="741.0" mnemonicParsing="false" onAction="#SubmitOnAction" text="Submit">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="368.0" layoutY="748.0" mnemonicParsing="false" onAction="#ClearOnAction" text="Clear">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
