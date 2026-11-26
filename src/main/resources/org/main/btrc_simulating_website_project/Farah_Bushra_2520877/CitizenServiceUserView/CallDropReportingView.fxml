@@ -4,6 +4,8 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,8 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="687.0" prefWidth="849.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Farah_Bushra_2520877.CitizenServiceUser.CallDropReportingViewController">
+<AnchorPane prefHeight="1216.0" prefWidth="851.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Farah_Bushra_2520877.CitizenServiceUser.CallDropReportingViewController">
    <children>
       <Text fill="#760f0f" layoutX="238.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Call Drop Reporting" wrappingWidth="596.87109375">
          <font>
@@ -66,5 +67,44 @@
             <Font size="24.0" />
          </font>
       </Button>
+      <Button layoutX="570.0" layoutY="443.0" mnemonicParsing="false" onAction="#BackToDashboardOnAction" text="Back To Dashboard" textFill="#790d0d">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Line endX="111.09291076660156" layoutX="129.0" layoutY="693.0" startX="-100.0" />
+      <Text layoutX="257.0" layoutY="702.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filter &amp; Load Table ">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Line endX="263.892822265625" layoutX="569.0" layoutY="693.0" startX="-87.30712890625" />
+      <Button layoutX="54.0" layoutY="727.0" mnemonicParsing="false" onAction="#FilterOnAction" text="Filter" textFill="#790d0d">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="275.0" layoutY="727.0" mnemonicParsing="false" onAction="#ShowAllOnAction" text="Show All" textFill="#790d0d">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <TextField fx:id="outputLabel" layoutX="461.0" layoutY="544.0" prefHeight="104.0" prefWidth="346.0" />
+      <TableView fx:id="TableViewCallDropReport" layoutX="39.0" layoutY="867.0" prefHeight="318.0" prefWidth="790.0">
+        <columns>
+          <TableColumn fx:id="operatorNameTableCol" prefWidth="144.00003051757812" text="Operator Name " />
+          <TableColumn fx:id="mobileNoTableCol" prefWidth="131.9999542236328" text="Mobile No." />
+            <TableColumn fx:id="callDropDateTableCol" prefWidth="145.5999755859375" text="Call Drop Date" />
+            <TableColumn fx:id="callDropTimeTableCol" prefWidth="148.800048828125" text="Call Drop Time " />
+            <TableColumn fx:id="locationTableCol" prefWidth="124.0" text="Location " />
+            <TableColumn fx:id="remarksTableCol" prefWidth="95.2000732421875" text="Remarks" />
+        </columns>
+      </TableView>
+      <Label layoutX="475.0" layoutY="739.0" text="Filter Operator ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="filterOperatorComboBox" layoutX="634.0" layoutY="740.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

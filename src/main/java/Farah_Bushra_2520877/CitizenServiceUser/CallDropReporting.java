@@ -1,8 +1,9 @@
 package Farah_Bushra_2520877.CitizenServiceUser;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class CallDropReporting {
+public class CallDropReporting implements Serializable {
     private String operatorName,mobileNumber,callDropTime,Location,remarks;
     private LocalDate callDropDate;
 
@@ -61,5 +62,17 @@ public class CallDropReporting {
 
     public void setCallDropDate(LocalDate callDropDate) {
         this.callDropDate = callDropDate;
+    }
+
+    @Override
+    public String toString() {
+        return "CallDropReporting{" +
+                "operatorName='" + operatorName + '\'' +
+                ", mobileNumber='" + mobileNumber + '\'' +
+                ", callDropTime='" + callDropTime + '\'' +
+                ", Location='" + Location + '\'' +
+                ", remarks='" + remarks + '\'' +
+                ", callDropDate=" + callDropDate +
+                '}';
     }
 }

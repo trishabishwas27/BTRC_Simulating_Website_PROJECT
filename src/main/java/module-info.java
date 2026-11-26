@@ -9,6 +9,7 @@ module org.main.btrc_simulating_website_project {
     opens Farah_Bushra_2520877 to javafx.fxml;
 
 
+    opens Farah_Bushra_2520877.CitizenServiceUser
+            to javafx.fxml, javafx.base;
 
-    opens Farah_Bushra_2520877.CitizenServiceUser to javafx.fxml;
 }

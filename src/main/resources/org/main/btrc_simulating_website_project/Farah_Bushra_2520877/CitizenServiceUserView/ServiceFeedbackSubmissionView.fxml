@@ -10,7 +10,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="678.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Farah_Bushra_2520877.CitizenServiceUser.ServiceFeedbackSubmissionViewController">
    <children>
       <Text layoutX="169.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Service Feedback Submission Form">
@@ -59,7 +58,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <TextField fx:id="outputLabel" layoutX="19.0" layoutY="560.0" prefHeight="94.0" prefWidth="782.0">
+      <TextField fx:id="outputLabel" layoutX="16.0" layoutY="484.0" prefHeight="94.0" prefWidth="782.0">
          <font>
             <Font size="18.0" />
          </font>
