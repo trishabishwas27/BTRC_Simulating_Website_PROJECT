@@ -1,6 +1,8 @@
 package Farah_Bushra_2520877.CitizenServiceUser;
 
-public class ServiceFeedbackSubmission {
+import java.io.Serializable;
+
+public class ServiceFeedbackSubmission implements Serializable {
     private String operatorName;
     private String serviceType;
     private String rating;
@@ -33,6 +35,26 @@ public class ServiceFeedbackSubmission {
 
     public String getFeedbackId() {
         return feedbackId;
+    }
+
+    public void setOperatorName(String operatorName) {
+        this.operatorName = operatorName;
+    }
+
+    public void setServiceType(String serviceType) {
+        this.serviceType = serviceType;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
+    public void setFeedbackComments(String feedbackComments) {
+        this.feedbackComments = feedbackComments;
+    }
+
+    public void setFeedbackId(String feedbackId) {
+        this.feedbackId = feedbackId;
     }
 
     @Override

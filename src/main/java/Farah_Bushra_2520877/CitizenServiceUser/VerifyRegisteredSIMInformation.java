@@ -1,6 +1,8 @@
 package Farah_Bushra_2520877.CitizenServiceUser;
 
-public class VerifyRegisteredSIMInformation {
+import java.io.Serializable;
+
+public class VerifyRegisteredSIMInformation implements Serializable {
     private String nidNumber;
     private String mobileNumber;
     private String operatorName;
