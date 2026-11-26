@@ -1,8 +1,9 @@
 package Farah_Bushra_2520877.CitizenServiceUser;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class LicenseInformationInquiry {
+public class LicenseInformationInquiry implements Serializable {
     private String licenseNo;
     private String companyName;
     private String licenseType;
