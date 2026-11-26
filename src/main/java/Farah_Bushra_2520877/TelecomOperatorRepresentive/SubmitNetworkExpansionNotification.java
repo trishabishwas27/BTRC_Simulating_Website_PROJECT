@@ -1,8 +1,9 @@
 package Farah_Bushra_2520877.TelecomOperatorRepresentive;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class SubmitNetworkExpansionNotification {
+public class SubmitNetworkExpansionNotification implements Serializable {
     private String expansionArea;
     private String expansionType;
     private Integer numberOfNewTowers;
