@@ -1,8 +1,9 @@
 package Farah_Bushra_2520877.TelecomOperatorRepresentive;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class RegulatoryFeePaymentRecord {
+public class RegulatoryFeePaymentRecord implements Serializable {
     private String operatorName;
     private String feeType;
     private Integer amountPaid;
