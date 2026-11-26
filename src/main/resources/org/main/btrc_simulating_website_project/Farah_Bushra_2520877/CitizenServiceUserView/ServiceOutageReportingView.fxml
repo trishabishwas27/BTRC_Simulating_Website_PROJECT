@@ -11,8 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="853.0" prefWidth="887.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Farah_Bushra_2520877.CitizenServiceUser.ServiceOutageReportingViewController">
+<AnchorPane prefHeight="711.0" prefWidth="887.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Farah_Bushra_2520877.CitizenServiceUser.ServiceOutageReportingViewController">
    <children>
       <Text fill="#b72a2a" layoutX="248.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Service Outage Reporting">
          <font>
@@ -56,15 +55,21 @@
          </font>
       </Label>
       <TextArea fx:id="outageDescriptionTextArea" layoutX="222.0" layoutY="456.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button layoutX="99.0" layoutY="741.0" mnemonicParsing="false" onAction="#SubmitOnAction" text="Submit">
+      <Button layoutX="576.0" layoutY="206.0" mnemonicParsing="false" onAction="#SubmitOnAction" text="Submit">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="368.0" layoutY="748.0" mnemonicParsing="false" onAction="#ClearOnAction" text="Clear">
+      <Button layoutX="576.0" layoutY="312.0" mnemonicParsing="false" onAction="#ClearOnAction" text="Clear">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
+      <Button layoutX="576.0" layoutY="412.0" mnemonicParsing="false" onAction="#BackToDashboardOnAction" text="Back To Dashboard">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <TextField fx:id="outputLabel" layoutX="501.0" layoutY="569.0" prefHeight="99.0" prefWidth="359.0" />
    </children>
 </AnchorPane>
