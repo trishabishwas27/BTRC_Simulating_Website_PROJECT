@@ -11,7 +11,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="807.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Farah_Bushra_2520877.TelecomOperatorRepresentive.SpectrumRequestSubmissionViewController">
    <children>
       <Text layoutX="174.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spectrum Request Submission ">
@@ -29,7 +28,7 @@
       <TextField fx:id="operatorNameTextField" layoutX="287.0" layoutY="135.0" />
       <DatePicker fx:id="requestDateDatePicker" layoutX="286.0" layoutY="385.0" />
       <ComboBox fx:id="frequencyBandComboBox" layoutX="286.0" layoutY="235.0" prefWidth="150.0" />
-      <Button layoutX="286.0" layoutY="691.0" mnemonicParsing="false" onAction="#SubmitRequestOnAction" prefHeight="65.0" prefWidth="150.0" text="Submit Request">
+      <Button layoutX="405.0" layoutY="599.0" mnemonicParsing="false" onAction="#SubmitRequestOnAction" prefHeight="65.0" prefWidth="150.0" text="Submit Request">
          <font>
             <Font size="18.0" />
          </font>
@@ -67,10 +66,16 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="689.0" layoutY="691.0" mnemonicParsing="false" onAction="#ClearOnAction" prefHeight="65.0" prefWidth="150.0" text="Clear">
+      <Button layoutX="658.0" layoutY="599.0" mnemonicParsing="false" onAction="#ClearOnAction" prefHeight="65.0" prefWidth="150.0" text="Clear">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
+      <Button layoutX="66.0" layoutY="598.0" mnemonicParsing="false" onAction="#BackToDashboardOnAction" prefHeight="66.0" prefWidth="191.0" text="Back To Dashboard">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <TextField fx:id="outputLabel" layoutX="62.0" layoutY="702.0" prefHeight="58.0" prefWidth="750.0" />
    </children>
 </AnchorPane>

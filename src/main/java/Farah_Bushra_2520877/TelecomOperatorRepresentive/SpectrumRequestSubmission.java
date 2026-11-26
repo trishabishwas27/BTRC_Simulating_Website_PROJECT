@@ -1,8 +1,9 @@
 package Farah_Bushra_2520877.TelecomOperatorRepresentive;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class SpectrumRequestSubmission {
+public class SpectrumRequestSubmission implements Serializable {
     private String operatorName;
     private String licenseNumber;
     private String frequencyBand;
