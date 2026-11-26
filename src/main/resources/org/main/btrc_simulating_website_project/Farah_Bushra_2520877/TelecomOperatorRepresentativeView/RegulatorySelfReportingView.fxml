@@ -11,7 +11,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="740.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Farah_Bushra_2520877.TelecomOperatorRepresentive.RegulatorySelfReportingViewController">
    <children>
       <Text layoutX="131.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Regulatory Self-Reporting " textAlignment="CENTER" wrappingWidth="623.0316772460938">
@@ -60,5 +59,11 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <Button layoutX="45.0" layoutY="639.0" mnemonicParsing="false" onAction="#BackToDashboard" text="Back To Dashboard">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <TextField fx:id="outputLabel" layoutX="443.0" layoutY="527.0" prefHeight="59.0" prefWidth="414.0" />
    </children>
 </AnchorPane>
