@@ -1,8 +1,9 @@
 package Farah_Bushra_2520877.TelecomOperatorRepresentive;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class SubmitLiscenseApplication {
+public class SubmitLiscenseApplication implements Serializable {
     private String companyName;
     private String registrationNumber;
     private String contactInformation;

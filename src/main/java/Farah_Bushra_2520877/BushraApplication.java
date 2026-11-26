@@ -5,6 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 
 public class BushraApplication extends Application {
@@ -14,7 +21,7 @@ public class BushraApplication extends Application {
 
         FXMLLoader fxmlLoader = new FXMLLoader(
                 BushraApplication.class.getResource(
-                        "/org/main/btrc_simulating_website_project/Farah_Bushra_2520877/CitizenServiceUserView/CitizenServiceUserView.fxml"
+                        "/org/main/btrc_simulating_website_project/Farah_Bushra_2520877/TelecomOperatorRepresentativeView/SubmitLiscenseApplicationView.fxml"
                 )
         );
 

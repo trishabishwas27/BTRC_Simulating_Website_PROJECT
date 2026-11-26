@@ -1,8 +1,18 @@
+
 package Farah_Bushra_2520877.TelecomOperatorRepresentive;
 
-import javafx.event.ActionEvent;
-import javafx.scene.control.*;
+import Farah_Bushra_2520877.BushraApplication;
+import Farah_Bushra_2520877.CitizenServiceUser.AppendableObjectOutputStream;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+
+import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class SubmitLiscenseApplicationViewController
@@ -16,7 +26,7 @@ public class SubmitLiscenseApplicationViewController
     @javafx.fxml.FXML
     private TextField registrationNumberTextField;
     @javafx.fxml.FXML
-    private ComboBox <String> liscenseTypeComboBox;
+    private ComboBox<String> liscenseTypeComboBox;
     @javafx.fxml.FXML
     private TextField companyNameTextField;
     @javafx.fxml.FXML
@@ -30,25 +40,28 @@ public class SubmitLiscenseApplicationViewController
 
     private ArrayList<String> registeredCompanyNumbers;
 
-    int applicationCount = 0;
-
     @javafx.fxml.FXML
     public void initialize() {
+
         applicationList = new ArrayList<SubmitLiscenseApplication>();
 
         registeredCompanyNumbers = new ArrayList<String>();
+
         registeredCompanyNumbers.add("REG-1001");
         registeredCompanyNumbers.add("REG-1002");
 
-        liscenseTypeComboBox.getItems().addAll("Mobile Operator", "ISP", "Other");
+        liscenseTypeComboBox.getItems().addAll(
+                "Mobile Operator", "ISP", "Other"
+        );
 
         applicationIdTextField.setEditable(false);
-
         applicationStatusTextFIeld.setEditable(false);
+        outputLabelTextField.setEditable(false);
 
         applicationIdTextField.setText("Not Generated");
-
         applicationStatusTextFIeld.setText("Not Submitted");
+
+        loadApplications();
     }
 
     private boolean isValid() {
@@ -68,80 +81,183 @@ public class SubmitLiscenseApplicationViewController
         return valid;
     }
 
-
-
-
-    @javafx.fxml.FXML
-    public void BackToDashboardOnAction(ActionEvent actionEvent) {
-    }
-
     @javafx.fxml.FXML
     public void SubmitApplicationOnAction(ActionEvent actionEvent) {
-        if (isValid()) {
 
-            boolean registrationFound = false;
-
-            for (String registrationNumber : registeredCompanyNumbers) {
-
-                if (registrationNumber.equals(
-                        registrationNumberTextField.getText())) {
-
-                    registrationFound = true;
-                }
-            }
-
-            if (registrationFound) {
-
-                applicationCount++;
-
-                String applicationId = "LIC-APP-" + applicationCount;
-
-                SubmitLiscenseApplication newApplication =
-                        new SubmitLiscenseApplication(
-                                companyNameTextField.getText(),
-                                registrationNumberTextField.getText(),
-                                contactInformationTextField.getText(),
-                                liscenseTypeComboBox.getValue(),
-                                reasonForApplyingTextArea.getText(),
-                                applicationDateDatePicker.getValue(),
-                                applicationId,
-                                "Pending"
-                        );
-
-                applicationList.add(newApplication);
-
-                applicationIdTextField.setText(applicationId);
-
-                applicationStatusTextFIeld.setText("Pending");
-
-                outputLabelTextField.setText("Application Submitted Successfully! Application ID: "
-                                + applicationId);
-
-            } else {
-
-                Alert a = new Alert(Alert.AlertType.ERROR);
-
-                a.setTitle("Registration Verification");
-
-                a.setContentText(
-                        "Company registration information does not match."
-                );
-
-                a.showAndWait();
-            }
-
-        } else {
+        if (!isValid()) {
 
             Alert a = new Alert(Alert.AlertType.ERROR);
 
             a.setTitle("Invalid Application");
-
-            a.setContentText(
-                    "Please complete all required information."
-            );
-
+            a.setContentText("Please complete all required information.");
             a.showAndWait();
+
+            return;
         }
 
+        String companyName = companyNameTextField.getText();
+        String registrationNumber = registrationNumberTextField.getText();
+        String contactInformation = contactInformationTextField.getText();
+        String licenseType = liscenseTypeComboBox.getValue();
+        String reasonForApplying = reasonForApplyingTextArea.getText();
+        LocalDate applicationDate = applicationDateDatePicker.getValue();
+
+        if (LocalDate.now().isBefore(applicationDate)) {
+
+            Alert a = new Alert(Alert.AlertType.ERROR);
+
+            a.setTitle("Invalid Application Date");
+            a.setContentText("Application date cannot be in the future.");
+            a.showAndWait();
+
+            return;
+        }
+
+        boolean registrationFound = false;
+
+        for (String reg : registeredCompanyNumbers) {
+
+            if (reg.equals(registrationNumber)) {
+
+                registrationFound = true;
+            }
+        }
+
+        if (!registrationFound) {
+
+            Alert a = new Alert(Alert.AlertType.ERROR);
+
+            a.setTitle("Registration Verification");
+            a.setContentText("Company registration information does not match.");
+            a.showAndWait();
+
+            return;
+        }
+
+        if (!((companyName.equals("Grameenphone")
+                && registrationNumber.equals("REG-1001"))
+                ||
+                (companyName.equals("Robi")
+                        && registrationNumber.equals("REG-1002")))) {
+
+            Alert a = new Alert(Alert.AlertType.ERROR);
+
+            a.setTitle("Registration Verification");
+            a.setContentText("Company name and registration number do not match.");
+            a.showAndWait();
+
+            return;
+        }
+
+        String applicationId =
+                Integer.toString(applicationList.size() + 1);
+
+        SubmitLiscenseApplication newApplication =
+                new SubmitLiscenseApplication(
+                        companyName,
+                        registrationNumber,
+                        contactInformation,
+                        licenseType,
+                        reasonForApplying,
+                        applicationDate,
+                        applicationId,
+                        "Pending"
+                );
+
+        try {
+
+            File f = new File("LicenseApplication.bin");
+
+            FileOutputStream fos = null;
+            ObjectOutputStream oos = null;
+
+            if (f.exists()) {
+
+                fos = new FileOutputStream(f, true);
+                oos = new AppendableObjectOutputStream(fos);
+            }
+            else {
+
+                fos = new FileOutputStream(f);
+                oos = new ObjectOutputStream(fos);
+            }
+
+            oos.writeObject(newApplication);
+            oos.close();
+
+            applicationList.add(newApplication);
+
+            applicationIdTextField.setText(applicationId);
+            applicationStatusTextFIeld.setText("Pending");
+
+            outputLabelTextField.setText(
+                    "Application Submitted Successfully! Application ID: "
+                            + applicationId
+            );
+        }
+        catch (Exception e) {
+
+            outputLabelTextField.setText(
+                    "License Application Submission Failed."
+            );
+        }
+    }
+
+    public void loadApplications() {
+
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+
+        try {
+
+            fis = new FileInputStream("LicenseApplication.bin");
+            ois = new ObjectInputStream(fis);
+
+            if (!applicationList.isEmpty()) {
+
+                applicationList.clear();
+            }
+
+            while (true) {
+
+                applicationList.add(
+                        (SubmitLiscenseApplication) ois.readObject()
+                );
+            }
+        }
+        catch (Exception e) {
+
+            try {
+                ois.close();
+            }
+            catch (Exception e2) {
+
+            }
+        }
+    }
+
+    @javafx.fxml.FXML
+    public void BackToDashboardOnAction(ActionEvent actionEvent) {
+
+        try {
+
+            FXMLLoader myFxmlLoader = new FXMLLoader(
+                    BushraApplication.class.getResource(
+                            "/org/main/btrc_simulating_website_project/Farah_Bushra_2520877/TelecomOperatorRepresentativeView/TelecomOperatorRepresentiveView.fxml"
+                    )
+            );
+
+            Scene nextScene = new Scene(myFxmlLoader.load());
+
+            Stage currentStage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+
+            currentStage.setScene(nextScene);
+            currentStage.setTitle("Telecom Operator Representative Dashboard");
+            currentStage.show();
+        }
+        catch (Exception e) {
+
+            outputLabelTextField.setText("Unable to open dashboard.");
+        }
     }
 }
