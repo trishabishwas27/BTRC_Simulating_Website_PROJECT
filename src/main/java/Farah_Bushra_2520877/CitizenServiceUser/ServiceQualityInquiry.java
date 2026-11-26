@@ -1,6 +1,8 @@
 package Farah_Bushra_2520877.CitizenServiceUser;
 
-public class ServiceQualityInquiry {
+import java.io.Serializable;
+
+public class ServiceQualityInquiry implements Serializable {
     private String operatorName;
     private String serviceType;
     private String area;
@@ -53,5 +55,16 @@ public class ServiceQualityInquiry {
 
     public void setServiceRemarks(String serviceRemarks) {
         this.serviceRemarks = serviceRemarks;
+    }
+
+    @Override
+    public String toString() {
+        return "ServiceQualityInquiry{" +
+                "operatorName='" + operatorName + '\'' +
+                ", serviceType='" + serviceType + '\'' +
+                ", area='" + area + '\'' +
+                ", qualityStatus='" + qualityStatus + '\'' +
+                ", serviceRemarks='" + serviceRemarks + '\'' +
+                '}';
     }
 }
