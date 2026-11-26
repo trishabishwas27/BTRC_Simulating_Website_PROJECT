@@ -1,9 +1,11 @@
 package Farah_Bushra_2520877.CitizenServiceUser;
 
 import java.time.LocalDate;
+import java.io.Serializable;
 
-public class RegisterAComplaint {
-    private String complaintId, operatorName, complaintType, complaintDetails, area ;
+public class RegisterAComplaint implements Serializable {
+
+    private String complaintId, operatorName, complaintType, complaintDetails, area;
     private LocalDate problemDate;
     private String mobileNumber;
 
@@ -18,6 +20,7 @@ public class RegisterAComplaint {
     }
 
     public String getComplaintId() {
+
         return complaintId;
     }
 

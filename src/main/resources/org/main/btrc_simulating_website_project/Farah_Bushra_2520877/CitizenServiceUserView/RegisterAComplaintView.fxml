@@ -11,7 +11,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="640.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Farah_Bushra_2520877.CitizenServiceUser.RegisterAComplaintViewController">
    <children>
       <Text cache="true" cacheHint="SPEED" depthTest="DISABLE" fill="#b57979e8" layoutX="166.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register  A Complaint" textAlignment="CENTER" wrappingWidth="406.45977783203125">
@@ -73,5 +72,10 @@
          </font>
       </Button>
       <TextField fx:id="outputLabel" layoutX="333.0" layoutY="514.0" prefHeight="26.0" prefWidth="454.0" />
+      <Button layoutX="533.0" layoutY="574.0" mnemonicParsing="false" onAction="#BackToDashboardOnAction" text="Back To Dashboard">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
