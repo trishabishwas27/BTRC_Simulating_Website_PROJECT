@@ -1,26 +1,34 @@
+
 package Farah_Bushra_2520877.TelecomOperatorRepresentive;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class TariffPlanSubmission {
+public class TariffPlanSubmission implements Serializable {
+
     private String operatorName;
     private String tariffPlanName;
     private String serviceType;
     private String planCategory;
-    private float voiceCallRate;
-    private float smsRate;
-    private float dataRate;
+    private TariffPlanRates rates;
     private LocalDate effectiveDate;
     private String planDescription;
 
-    public TariffPlanSubmission(String operatorName, String tariffPlanName, String serviceType, String planCategory, float voiceCallRate, float smsRate, float dataRate, LocalDate effectiveDate, String planDescription) {
+    public TariffPlanSubmission(String operatorName, String tariffPlanName,
+                                String serviceType, String planCategory,
+                                float voiceCallRate, float smsRate,
+                                float dataRate, LocalDate effectiveDate,
+                                String planDescription) {
+
         this.operatorName = operatorName;
         this.tariffPlanName = tariffPlanName;
         this.serviceType = serviceType;
         this.planCategory = planCategory;
-        this.voiceCallRate = voiceCallRate;
-        this.smsRate = smsRate;
-        this.dataRate = dataRate;
+
+        this.rates = new TariffPlanRates(
+                voiceCallRate, smsRate, dataRate
+        );
+
         this.effectiveDate = effectiveDate;
         this.planDescription = planDescription;
     }
@@ -58,27 +66,27 @@ public class TariffPlanSubmission {
     }
 
     public float getVoiceCallRate() {
-        return voiceCallRate;
+        return rates.getVoiceCallRate();
     }
 
     public void setVoiceCallRate(float voiceCallRate) {
-        this.voiceCallRate = voiceCallRate;
+        rates.setVoiceCallRate(voiceCallRate);
     }
 
     public float getSmsRate() {
-        return smsRate;
+        return rates.getSmsRate();
     }
 
     public void setSmsRate(float smsRate) {
-        this.smsRate = smsRate;
+        rates.setSmsRate(smsRate);
     }
 
     public float getDataRate() {
-        return dataRate;
+        return rates.getDataRate();
     }
 
     public void setDataRate(float dataRate) {
-        this.dataRate = dataRate;
+        rates.setDataRate(dataRate);
     }
 
     public LocalDate getEffectiveDate() {
@@ -104,9 +112,7 @@ public class TariffPlanSubmission {
                 ", tariffPlanName='" + tariffPlanName + '\'' +
                 ", serviceType='" + serviceType + '\'' +
                 ", planCategory='" + planCategory + '\'' +
-                ", voiceCallRate=" + voiceCallRate +
-                ", smsRate=" + smsRate +
-                ", dataRate=" + dataRate +
+                ", rates=" + rates +
                 ", effectiveDate=" + effectiveDate +
                 ", planDescription='" + planDescription + '\'' +
                 '}';
