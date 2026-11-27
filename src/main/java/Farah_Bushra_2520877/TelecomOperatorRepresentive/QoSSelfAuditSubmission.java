@@ -1,9 +1,11 @@
+
 package Farah_Bushra_2520877.TelecomOperatorRepresentive;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class QoSSelfAuditSubmission {
-    private String operatorName;
+public class QoSSelfAuditSubmission extends RegulatorySubmission implements Serializable {
+
     private String serviceType;
     private String technology;
     private String auditArea;
@@ -15,10 +17,17 @@ public class QoSSelfAuditSubmission {
     private float averageLatency;
     private String auditFindings;
     private String correctiveAction;
-    private LocalDate submissionDate;
 
-    public QoSSelfAuditSubmission(String operatorName, String serviceType, String technology, String auditArea, LocalDate auditStartDate, LocalDate auditEndDate, float callSetupSuccessRate, float callDropRate, float averageDataSpeed, float averageLatency, String auditFindings, String correctiveAction, LocalDate submissionDate) {
-        this.operatorName = operatorName;
+    public QoSSelfAuditSubmission(String operatorName, String serviceType,
+                                  String technology, String auditArea,
+                                  LocalDate auditStartDate, LocalDate auditEndDate,
+                                  float callSetupSuccessRate, float callDropRate,
+                                  float averageDataSpeed, float averageLatency,
+                                  String auditFindings, String correctiveAction,
+                                  LocalDate submissionDate) {
+
+        super(operatorName, submissionDate);
+
         this.serviceType = serviceType;
         this.technology = technology;
         this.auditArea = auditArea;
@@ -30,15 +39,6 @@ public class QoSSelfAuditSubmission {
         this.averageLatency = averageLatency;
         this.auditFindings = auditFindings;
         this.correctiveAction = correctiveAction;
-        this.submissionDate = submissionDate;
-    }
-
-    public String getOperatorName() {
-        return operatorName;
-    }
-
-    public void setOperatorName(String operatorName) {
-        this.operatorName = operatorName;
     }
 
     public String getServiceType() {
@@ -129,18 +129,15 @@ public class QoSSelfAuditSubmission {
         this.correctiveAction = correctiveAction;
     }
 
-    public LocalDate getSubmissionDate() {
-        return submissionDate;
-    }
-
-    public void setSubmissionDate(LocalDate submissionDate) {
-        this.submissionDate = submissionDate;
+    @Override
+    public String getReportType() {
+        return "QoS Self-Audit";
     }
 
     @Override
     public String toString() {
         return "QoSSelfAuditSubmission{" +
-                "operatorName='" + operatorName + '\'' +
+                "operatorName='" + getOperatorName() + '\'' +
                 ", serviceType='" + serviceType + '\'' +
                 ", technology='" + technology + '\'' +
                 ", auditArea='" + auditArea + '\'' +
@@ -152,7 +149,7 @@ public class QoSSelfAuditSubmission {
                 ", averageLatency=" + averageLatency +
                 ", auditFindings='" + auditFindings + '\'' +
                 ", correctiveAction='" + correctiveAction + '\'' +
-                ", submissionDate=" + submissionDate +
+                ", submissionDate=" + getSubmissionDate() +
                 '}';
     }
 }
