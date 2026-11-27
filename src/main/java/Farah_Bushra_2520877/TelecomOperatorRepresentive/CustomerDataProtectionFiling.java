@@ -1,9 +1,11 @@
+
 package Farah_Bushra_2520877.TelecomOperatorRepresentive;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class CustomerDataProtectionFiling {
-    private String operatorName;
+public class CustomerDataProtectionFiling extends RegulatorySubmission implements Serializable {
+
     private String filingType;
     private String dataCategory;
     private String processingPurpose;
@@ -11,13 +13,25 @@ public class CustomerDataProtectionFiling {
     private String protectionMeasure;
     private String dataProtectionOfficer;
     private String officerContactEmail;
-    private LocalDate filingDate;
     private String protectionDetails;
     private String additionalRemarks;
     private boolean isDeclarationConfirmed;
 
-    public CustomerDataProtectionFiling(String operatorName, String filingType, String dataCategory, String processingPurpose, String dataRetentionPeriod, String protectionMeasure, String dataProtectionOfficer, String officerContactEmail, LocalDate filingDate, String protectionDetails, String additionalRemarks, boolean isDeclarationConfirmed) {
-        this.operatorName = operatorName;
+    public CustomerDataProtectionFiling(String operatorName,
+                                        String filingType,
+                                        String dataCategory,
+                                        String processingPurpose,
+                                        String dataRetentionPeriod,
+                                        String protectionMeasure,
+                                        String dataProtectionOfficer,
+                                        String officerContactEmail,
+                                        LocalDate filingDate,
+                                        String protectionDetails,
+                                        String additionalRemarks,
+                                        boolean isDeclarationConfirmed) {
+
+        super(operatorName, filingDate);
+
         this.filingType = filingType;
         this.dataCategory = dataCategory;
         this.processingPurpose = processingPurpose;
@@ -25,18 +39,9 @@ public class CustomerDataProtectionFiling {
         this.protectionMeasure = protectionMeasure;
         this.dataProtectionOfficer = dataProtectionOfficer;
         this.officerContactEmail = officerContactEmail;
-        this.filingDate = filingDate;
         this.protectionDetails = protectionDetails;
         this.additionalRemarks = additionalRemarks;
         this.isDeclarationConfirmed = isDeclarationConfirmed;
-    }
-
-    public String getOperatorName() {
-        return operatorName;
-    }
-
-    public void setOperatorName(String operatorName) {
-        this.operatorName = operatorName;
     }
 
     public String getFilingType() {
@@ -96,11 +101,11 @@ public class CustomerDataProtectionFiling {
     }
 
     public LocalDate getFilingDate() {
-        return filingDate;
+        return getSubmissionDate();
     }
 
     public void setFilingDate(LocalDate filingDate) {
-        this.filingDate = filingDate;
+        setSubmissionDate(filingDate);
     }
 
     public String getProtectionDetails() {
@@ -128,9 +133,14 @@ public class CustomerDataProtectionFiling {
     }
 
     @Override
+    public String getReportType() {
+        return "Customer Data Protection Filing";
+    }
+
+    @Override
     public String toString() {
         return "CustomerDataProtectionFiling{" +
-                "operatorName='" + operatorName + '\'' +
+                "operatorName='" + getOperatorName() + '\'' +
                 ", filingType='" + filingType + '\'' +
                 ", dataCategory='" + dataCategory + '\'' +
                 ", processingPurpose='" + processingPurpose + '\'' +
@@ -138,7 +148,7 @@ public class CustomerDataProtectionFiling {
                 ", protectionMeasure='" + protectionMeasure + '\'' +
                 ", dataProtectionOfficer='" + dataProtectionOfficer + '\'' +
                 ", officerContactEmail='" + officerContactEmail + '\'' +
-                ", filingDate=" + filingDate +
+                ", filingDate=" + getFilingDate() +
                 ", protectionDetails='" + protectionDetails + '\'' +
                 ", additionalRemarks='" + additionalRemarks + '\'' +
                 ", isDeclarationConfirmed=" + isDeclarationConfirmed +

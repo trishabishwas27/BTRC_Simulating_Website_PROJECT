@@ -12,8 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="987.0" prefWidth="939.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Farah_Bushra_2520877.TelecomOperatorRepresentive.CustomerDataProtectionFilingViewController">
+<AnchorPane prefHeight="581.0" prefWidth="939.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Farah_Bushra_2520877.TelecomOperatorRepresentive.CustomerDataProtectionFilingViewController">
    <children>
       <Text layoutX="130.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Data Protection Filing">
          <font>
@@ -21,91 +20,92 @@
          </font>
       </Text>
       <Line endX="611.2000122070312" endY="-17.20000457763672" layoutX="188.0" layoutY="114.0" startX="-96.80000305175781" startY="-10.799995422363281" />
-      <Label layoutX="32.0" layoutY="145.0" text="Operator Name">
+      <Label layoutX="13.0" layoutY="111.0" text="Operator Name">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextArea fx:id="protectionDetailsTextArea" layoutX="186.0" layoutY="517.0" prefHeight="94.0" prefWidth="741.0" />
-      <TextField fx:id="operatorNameTextField" layoutX="178.0" layoutY="146.0" prefHeight="26.0" prefWidth="749.0" />
-      <ComboBox fx:id="filingTypeComboBox" layoutX="178.0" layoutY="186.0" prefHeight="26.0" prefWidth="750.0" />
-      <DatePicker fx:id="filingDatePicker" layoutX="147.0" layoutY="476.0" prefHeight="26.0" prefWidth="780.0" />
-      <Button layoutX="32.0" layoutY="884.0" mnemonicParsing="false" onAction="#SubmitFilingOnAction" text="Submit Filing">
+      <TextArea fx:id="protectionDetailsTextArea" layoutX="20.0" layoutY="329.0" prefHeight="94.0" prefWidth="262.0" />
+      <TextField fx:id="operatorNameTextField" layoutX="147.0" layoutY="111.0" prefHeight="26.0" prefWidth="155.0" />
+      <ComboBox fx:id="filingTypeComboBox" layoutX="430.0" layoutY="111.0" prefHeight="26.0" prefWidth="149.0" />
+      <DatePicker fx:id="filingDatePicker" layoutX="524.0" layoutY="243.0" prefHeight="26.0" prefWidth="206.0" />
+      <Button layoutX="26.0" layoutY="493.0" mnemonicParsing="false" onAction="#SubmitFilingOnAction" text="Submit Filing">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Label layoutX="32.0" layoutY="185.0" text="Filing Type">
+      <Label layoutX="336.0" layoutY="111.0" text="Filing Type">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="processingPurposeTextField" layoutX="206.0" layoutY="269.0" prefHeight="26.0" prefWidth="718.0" />
-      <Label layoutX="32.0" layoutY="220.0" text="Data Category">
+      <TextField fx:id="processingPurposeTextField" layoutX="185.0" layoutY="159.0" prefHeight="26.0" prefWidth="197.0" />
+      <Label layoutX="613.0" layoutY="111.0" text="Data Category">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <ComboBox fx:id="dataCatagoryComboBox" layoutX="177.0" layoutY="227.0" prefHeight="26.0" prefWidth="750.0" />
-      <Label layoutX="33.0" layoutY="269.0" text="Processing Purpose">
+      <ComboBox fx:id="dataCatagoryComboBox" layoutX="746.0" layoutY="111.0" prefHeight="26.0" prefWidth="171.0" />
+      <Label layoutX="12.0" layoutY="159.0" text="Processing Purpose">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="33.0" layoutY="305.0" text="Data Retention Period">
+      <Label layoutX="417.0" layoutY="158.0" text="Data Retention Period">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="dataRetentionPeriod" layoutX="217.0" layoutY="305.0" prefHeight="26.0" prefWidth="709.0" />
-      <Label layoutX="33.0" layoutY="347.0" text="Protection Measure">
+      <TextField fx:id="dataRetentionPeriod" layoutX="613.0" layoutY="158.0" prefHeight="26.0" prefWidth="206.0" />
+      <Label layoutX="12.0" layoutY="203.0" text="Protection Measure">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="officerContactEmailTextField" layoutX="208.0" layoutY="435.0" prefHeight="26.0" prefWidth="718.0" />
-      <Label layoutX="33.0" layoutY="389.0" text="Data Protection Officer">
+      <TextField fx:id="officerContactEmailTextField" layoutX="205.0" layoutY="243.0" prefHeight="26.0" prefWidth="182.0" />
+      <Label layoutX="386.0" layoutY="203.0" text="Data Protection Officer">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <ComboBox fx:id="protectionMeasureComboBox" layoutX="198.0" layoutY="347.0" prefHeight="26.0" prefWidth="733.0" />
-      <TextField fx:id="dataProtectionOfficerTextField" layoutX="228.0" layoutY="389.0" prefHeight="26.0" prefWidth="701.0" />
-      <Label layoutX="30.0" layoutY="435.0" text="Officer Contact Email">
+      <ComboBox fx:id="protectionMeasureComboBox" layoutX="185.0" layoutY="203.0" prefHeight="26.0" prefWidth="171.0" />
+      <TextField fx:id="dataProtectionOfficerTextField" layoutX="575.0" layoutY="203.0" prefHeight="26.0" prefWidth="189.0" />
+      <Label layoutX="14.0" layoutY="243.0" text="Officer Contact Email">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="30.0" layoutY="475.0" text="Filing Date">
+      <Label layoutX="417.0" layoutY="242.0" text="Filing Date">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="30.0" layoutY="517.0" text="Protection Details">
+      <Label layoutX="19.0" layoutY="293.0" text="Protection Details">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="30.0" layoutY="634.0" text="Additional Remarks">
+      <Label layoutX="333.0" layoutY="293.0" text="Additional Remarks">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextArea fx:id="additionalRemarksTextArea" layoutX="197.0" layoutY="634.0" prefHeight="93.0" prefWidth="734.0" />
-      <CheckBox fx:id="isDeclarationConfirmedCheckBox" layoutX="30.0" layoutY="780.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="894.0" text="Is Declaration Confirmed">
+      <TextArea fx:id="additionalRemarksTextArea" layoutX="336.0" layoutY="329.0" prefHeight="94.0" prefWidth="307.0" />
+      <CheckBox fx:id="isDeclarationConfirmedCheckBox" layoutX="681.0" layoutY="293.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="237.0" text="Is Declaration Confirmed">
          <font>
             <Font size="18.0" />
          </font>
       </CheckBox>
-      <Button layoutX="358.0" layoutY="884.0" mnemonicParsing="false" onAction="#ClearOnAction" text="Clear">
+      <Button layoutX="282.0" layoutY="493.0" mnemonicParsing="false" onAction="#ClearOnAction" text="Clear">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="613.0" layoutY="884.0" mnemonicParsing="false" onAction="#BackToDashboardOnAction" text="Back To Dashboard">
+      <Button layoutX="509.0" layoutY="493.0" mnemonicParsing="false" onAction="#BackToDashboardOnAction" text="Back To Dashboard">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
+      <TextField fx:id="outputLabel" layoutX="26.0" layoutY="438.0" prefHeight="36.0" prefWidth="898.0" />
    </children>
 </AnchorPane>
