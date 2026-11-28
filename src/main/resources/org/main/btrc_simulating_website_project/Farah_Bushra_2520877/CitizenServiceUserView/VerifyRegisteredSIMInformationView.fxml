@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="719.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Farah_Bushra_2520877.CitizenServiceUser.VerifyRegisteredSIMInformationViewController">
+   <children>
+      <Text fill="#8c1e1e" layoutX="118.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Verify Registered SIM Information" textAlignment="CENTER" wrappingWidth="556.6539306640625">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Line endX="764.4999389648438" endY="7.62939453125E-6" layoutX="107.0" layoutY="96.0" startX="-107.0" startY="7.62939453125E-6" />
+      <Label layoutX="14.0" layoutY="117.0" prefHeight="20.0" prefWidth="96.0" text="NID Number">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nidNumberTextField" layoutX="104.0" layoutY="114.0" />
+      <Label layoutX="277.0" layoutY="117.0" prefHeight="20.0" prefWidth="142.0" text="Mobile Number">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="operatorNameTextField" layoutX="700.0" layoutY="114.0" />
+      <Label layoutX="592.0" layoutY="117.0" prefHeight="20.0" prefWidth="135.0" text="Operator Name">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="252.0" layoutY="176.0" prefHeight="20.0" prefWidth="135.0" text="Report ID">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="reportIdTextField" layoutX="381.0" layoutY="173.0" />
+      <Label layoutX="14.0" layoutY="166.0" prefHeight="20.0" prefWidth="135.0" text="Report Reason">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="574.0" layoutY="176.0" prefHeight="20.0" prefWidth="135.0" text="Report Status">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="reportStatusTextField" layoutX="700.0" layoutY="173.0" />
+      <TextArea fx:id="reportReasonTextArea" layoutX="18.0" layoutY="196.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button layoutX="296.0" layoutY="266.0" mnemonicParsing="false" onAction="#CheckSIMOnAction" text="Check SIM">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="436.0" layoutY="266.0" mnemonicParsing="false" onAction="#SubmitReportOnAction" text="Submit Report">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label fx:id="outputLabel" layoutX="405.0" layoutY="568.0" prefHeight="42.0" prefWidth="338.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="mobileNumberComboBox" layoutX="408.0" layoutY="114.0" prefWidth="150.0" />
+      <Button layoutX="620.0" layoutY="266.0" mnemonicParsing="false" onAction="#BackToDashboardOnAction" text="Back To Dashboard">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tableViewSim" layoutX="49.0" layoutY="459.0" prefHeight="200.0" prefWidth="771.0">
+        <columns>
+          <TableColumn fx:id="mobileNoTableCol" prefWidth="239.1999397277832" text="Mobile Number " />
+          <TableColumn fx:id="operatorNameTableCol" prefWidth="260.00006103515625" text="Operator Name " />
+            <TableColumn fx:id="reportStatusTableCol" prefWidth="272.7999267578125" text="Report Status" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="807.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Farah_Bushra_2520877.TelecomOperatorRepresentive.SpectrumRequestSubmissionViewController">
+   <children>
+      <Text layoutX="174.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spectrum Request Submission ">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Text>
+      <Line endX="565.199951171875" endY="-5.999992370605469" layoutX="186.0" layoutY="90.0" startX="-100.0" />
+      <Label layoutX="37.0" layoutY="134.0" text="Operator Name">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="purposeOfRequestTextArea" layoutX="287.0" layoutY="449.0" prefHeight="118.0" prefWidth="587.0" />
+      <TextField fx:id="operatorNameTextField" layoutX="287.0" layoutY="135.0" />
+      <DatePicker fx:id="requestDateDatePicker" layoutX="286.0" layoutY="385.0" />
+      <ComboBox fx:id="frequencyBandComboBox" layoutX="286.0" layoutY="235.0" prefWidth="150.0" />
+      <Button layoutX="405.0" layoutY="599.0" mnemonicParsing="false" onAction="#SubmitRequestOnAction" prefHeight="65.0" prefWidth="150.0" text="Submit Request">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="37.0" layoutY="180.0" text="License Number">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="licenseNumberTextField" layoutX="287.0" layoutY="181.0" />
+      <Label layoutX="35.0" layoutY="234.0" text="Frequency Band">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="35.0" layoutY="286.0" text="Requested Bandwidth(M Hz)">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="requestedBandwidthTextField" layoutX="287.0" layoutY="287.0" />
+      <Label layoutX="35.0" layoutY="334.0" text="Coverage Area">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="coverageAreaTextField" layoutX="287.0" layoutY="335.0" />
+      <Label layoutX="35.0" layoutY="384.0" text="Request Date">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="35.0" layoutY="449.0" text="Purpose of Request">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="658.0" layoutY="599.0" mnemonicParsing="false" onAction="#ClearOnAction" prefHeight="65.0" prefWidth="150.0" text="Clear">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="66.0" layoutY="598.0" mnemonicParsing="false" onAction="#BackToDashboardOnAction" prefHeight="66.0" prefWidth="191.0" text="Back To Dashboard">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <TextField fx:id="outputLabel" layoutX="62.0" layoutY="702.0" prefHeight="58.0" prefWidth="750.0" />
+   </children>
+</AnchorPane>

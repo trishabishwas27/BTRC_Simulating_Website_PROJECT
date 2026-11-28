@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="746.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Farah_Bushra_2520877.TelecomOperatorRepresentive.RegulatoryFeePaymentRecordViewController">
+   <children>
+      <Text layoutX="144.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Regulatory Fee Payment Record ">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Text>
+      <Line endX="608.4000244140625" endY="7.62939453125E-6" layoutX="178.0" layoutY="94.0" startX="-100.0" />
+      <Label layoutX="19.0" layoutY="143.0" text="Operator Name">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="operatorNameTextField" layoutX="160.0" layoutY="143.0" prefHeight="26.0" prefWidth="171.0" />
+      <TextArea fx:id="remarksTextArea" layoutX="108.0" layoutY="312.0" prefHeight="40.0" prefWidth="751.0" />
+      <DatePicker fx:id="paymentDateDatePicker" layoutX="629.0" layoutY="253.0" prefHeight="26.0" prefWidth="216.0" />
+      <ComboBox fx:id="paymentMethodComboBox" layoutX="534.0" layoutY="197.0" prefHeight="26.0" prefWidth="190.0" />
+      <Button layoutX="22.0" layoutY="379.0" mnemonicParsing="false" onAction="#SubmitPaymentRecordOnAction" prefHeight="27.0" prefWidth="216.0" text="Submit Payment Record">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="368.0" layoutY="142.0" text="Fee Type">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="197.0" text="Amount Paid (BDT)">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="370.0" layoutY="197.0" text="Payment Method">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="253.0" text="Bank / Transaction Reference">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="491.0" layoutY="253.0" text="Payment Date">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="19.0" layoutY="312.0" text="Remarks">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="299.0" layoutY="379.0" mnemonicParsing="false" onAction="#ClearOnAction" text="Clear">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <TextField fx:id="amountPaidTextField" layoutX="175.0" layoutY="197.0" prefHeight="26.0" prefWidth="171.0" />
+      <TextField fx:id="transactionReferenceTextField" layoutX="264.0" layoutY="253.0" prefHeight="26.0" prefWidth="203.0" />
+      <ComboBox fx:id="feeTypeComboBox" layoutX="457.0" layoutY="143.0" prefHeight="26.0" prefWidth="216.0" />
+      <Button layoutX="648.0" layoutY="379.0" mnemonicParsing="false" onAction="#BackToDashboardOnAction" text="Back To Dashboard">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tableView" layoutX="28.0" layoutY="471.0" prefHeight="200.0" prefWidth="823.0">
+        <columns>
+          <TableColumn fx:id="operatorTableCol" prefWidth="96.80001831054688" text="Operator" />
+          <TableColumn fx:id="feeTypeTableCol" prefWidth="115.99996948242188" text="Fee Type" />
+            <TableColumn fx:id="amountTableCol" prefWidth="143.19998168945312" text="Amount " />
+            <TableColumn fx:id="methodTableCol" prefWidth="93.5999755859375" text="Method " />
+            <TableColumn fx:id="refferenceTableCol" prefWidth="120.800048828125" text="Refference" />
+            <TableColumn fx:id="dateTableCOl" prefWidth="115.20001220703125" text="Date " />
+            <TableColumn fx:id="remarksTableCol" prefWidth="138.39990234375" text="Remarks" />
+        </columns>
+      </TableView>
+      <TextField fx:id="outputLabel" layoutX="64.0" layoutY="687.0" prefHeight="26.0" prefWidth="780.0" />
+   </children>
+</AnchorPane>
