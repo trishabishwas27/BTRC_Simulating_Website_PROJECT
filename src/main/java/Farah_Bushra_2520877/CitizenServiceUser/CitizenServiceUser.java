@@ -1,32 +1,20 @@
 package Farah_Bushra_2520877.CitizenServiceUser;
 
-import java.io.Serializable;
+import Farah_Bushra_2520877.User;
 
-public class CitizenServiceUser implements Serializable {
+public class CitizenServiceUser extends User {
 
-    private final String citizenId;
-    private String name;
     private String nidNumber;
     private String mobileNumber;
 
-    public CitizenServiceUser(String citizenId, String name,
-                              String nidNumber, String mobileNumber) {
-        this.citizenId = citizenId;
-        this.name = name;
+    public CitizenServiceUser(String userId,
+                              String name,
+                              String nidNumber,
+                              String mobileNumber) {
+
+        super(userId, name);
         this.nidNumber = nidNumber;
         this.mobileNumber = mobileNumber;
-    }
-
-    public String getCitizenId() {
-        return citizenId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getNidNumber() {
@@ -46,12 +34,7 @@ public class CitizenServiceUser implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "CitizenServiceUser{" +
-                "citizenId='" + citizenId + '\'' +
-                ", name='" + name + '\'' +
-                ", nidNumber='" + nidNumber + '\'' +
-                ", mobileNumber='" + mobileNumber + '\'' +
-                '}';
+    public String getUserType() {
+        return "Citizen Service User";
     }
 }
