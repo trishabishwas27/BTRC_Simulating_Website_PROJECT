@@ -1,15 +1,17 @@
-
 package Farah_Bushra_2520877.TelecomOperatorRepresentive;
 
 import java.io.Serializable;
 
-public class TariffPlanRates implements  Serializable{
+public final class TariffPlanRates implements Serializable {
 
     private float voiceCallRate;
     private float smsRate;
     private float dataRate;
 
-    public TariffPlanRates(float voiceCallRate, float smsRate, float dataRate) {
+    public TariffPlanRates(float voiceCallRate,
+                           float smsRate,
+                           float dataRate) {
+
         this.voiceCallRate = voiceCallRate;
         this.smsRate = smsRate;
         this.dataRate = dataRate;
@@ -41,7 +43,7 @@ public class TariffPlanRates implements  Serializable{
 
     @Override
     public String toString() {
-        return "TariffRates{" +
+        return "TariffPlanRates{" +
                 "voiceCallRate=" + voiceCallRate +
                 ", smsRate=" + smsRate +
                 ", dataRate=" + dataRate +

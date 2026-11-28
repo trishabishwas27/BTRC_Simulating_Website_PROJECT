@@ -4,7 +4,7 @@ package Farah_Bushra_2520877.TelecomOperatorRepresentive;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public abstract class RegulatorySubmission implements Serializable {
+public abstract class RegulatorySubmission implements Serializable, Reportable {
 
     private String operatorName;
     private LocalDate submissionDate;
@@ -29,6 +29,6 @@ public abstract class RegulatorySubmission implements Serializable {
     public void setSubmissionDate(LocalDate submissionDate) {
         this.submissionDate = submissionDate;
     }
-
+@Override
     public abstract String getReportType();
 }

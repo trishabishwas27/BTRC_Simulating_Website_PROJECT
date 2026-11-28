@@ -5,6 +5,8 @@ import java.io.Serializable;
 
 public class RegisterAComplaint implements Serializable {
 
+    public static final int MOBILE_NUMBER_LENGTH = 11;
+    public static final String MOBILE_PREFIX = "01";
     private String complaintId, operatorName, complaintType, complaintDetails, area;
     private LocalDate problemDate;
     private String mobileNumber;

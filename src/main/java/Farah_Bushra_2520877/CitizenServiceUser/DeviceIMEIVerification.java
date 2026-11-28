@@ -4,13 +4,19 @@ import java.io.Serializable;
 
 public class DeviceIMEIVerification implements Serializable {
 
-    private String IMEINumber;
+    private final String IMEINumber;
     private String deviceBrand;
     private String deviceModel;
     private String deviceStatus;
     private String verificationStatus;
 
-    public DeviceIMEIVerification(String IMEINumber, String deviceBrand, String deviceModel, String deviceStatus, String verificationStatus) {
+    public static final int IMEI_LENGTH = 15;
+
+    public DeviceIMEIVerification(String IMEINumber,
+                                  String deviceBrand,
+                                  String deviceModel,
+                                  String deviceStatus,
+                                  String verificationStatus) {
         this.IMEINumber = IMEINumber;
         this.deviceBrand = deviceBrand;
         this.deviceModel = deviceModel;
@@ -20,10 +26,6 @@ public class DeviceIMEIVerification implements Serializable {
 
     public String getIMEINumber() {
         return IMEINumber;
-    }
-
-    public void setIMEINumber(String IMEINumber) {
-        this.IMEINumber = IMEINumber;
     }
 
     public String getDeviceBrand() {
@@ -58,14 +60,20 @@ public class DeviceIMEIVerification implements Serializable {
         this.verificationStatus = verificationStatus;
     }
 
-    @Override
-    public String toString() {
-        return "DeviceIMEIVerification{" +
-                "IMEINumber='" + IMEINumber + '\'' +
-                ", deviceBrand='" + deviceBrand + '\'' +
-                ", deviceModel='" + deviceModel + '\'' +
-                ", deviceStatus='" + deviceStatus + '\'' +
-                ", verificationStatus='" + verificationStatus + '\'' +
-                '}';
+
+    public static boolean isValidIMEI(String imei) {
+
+        if (imei == null || imei.length() != IMEI_LENGTH) {
+            return false;
+        }
+
+        for (int i = 0; i < imei.length(); i++) {
+
+            if (imei.charAt(i) < '0' || imei.charAt(i) > '9') {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

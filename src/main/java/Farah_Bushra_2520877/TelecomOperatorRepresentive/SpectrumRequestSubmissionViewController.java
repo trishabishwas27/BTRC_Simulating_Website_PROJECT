@@ -6,6 +6,7 @@ import Farah_Bushra_2520877.CitizenServiceUser.AppendableObjectOutputStream;
 import Farah_Bushra_2520877.CitizenServiceUser.LicenseInformationInquiry;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -19,31 +20,33 @@ import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class SpectrumRequestSubmissionViewController
-{
-    @javafx.fxml.FXML
+public class SpectrumRequestSubmissionViewController {
+
+    @FXML
     private TextField licenseNumberTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField requestedBandwidthTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField coverageAreaTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField operatorNameTextField;
-    @javafx.fxml.FXML
+    @FXML
     private DatePicker requestDateDatePicker;
-    @javafx.fxml.FXML
+    @FXML
     private TextArea purposeOfRequestTextArea;
-    @javafx.fxml.FXML
+    @FXML
     private ComboBox<String> frequencyBandComboBox;
-    @javafx.fxml.FXML
+    @FXML
     private TextField outputLabel;
 
-    private ArrayList<LicenseInformationInquiry> licenseList;
+    private ArrayList<LicenseInformationInquiry> licenseList =
+            new ArrayList<>();
 
-    @javafx.fxml.FXML
+    private ArrayList<TelecomCompany> companyList =
+            new ArrayList<>();
+
+    @FXML
     public void initialize() {
-
-        licenseList = new ArrayList<LicenseInformationInquiry>();
 
         frequencyBandComboBox.getItems().addAll(
                 "700 MHz",
@@ -57,6 +60,26 @@ public class SpectrumRequestSubmissionViewController
         outputLabel.setEditable(false);
 
         loadLicenses();
+
+        companyList.add(new TelecomCompany(
+                "REG-1001",
+                "Grameenphone",
+                "Demo Contact"
+        ));
+
+        companyList.add(new TelecomCompany(
+                "REG-1002",
+                "Robi",
+                "Demo Contact"
+        ));
+
+        for (TelecomCompany company : companyList) {
+
+            for (LicenseInformationInquiry license : licenseList) {
+
+                company.addLicense(license);
+            }
+        }
     }
 
     public void loadLicenses() {
@@ -103,15 +126,18 @@ public class SpectrumRequestSubmissionViewController
 
             licenseList.clear();
 
-            outputLabel.setText("Unable to load license records.");
+            outputLabel.setText(
+                    "Unable to load license records.");
         }
 
         try {
 
             if (ois != null) {
+
                 ois.close();
             }
             else if (fis != null) {
+
                 fis.close();
             }
         }
@@ -120,23 +146,46 @@ public class SpectrumRequestSubmissionViewController
         }
     }
 
-    public boolean verifyLicense(String operatorName, String licenseNumber) {
+    public LicenseInformationInquiry findLicense(
+            String operatorName,
+            String licenseNumber) {
+
+        for (TelecomCompany company : companyList) {
+
+            if (company.getCompanyName().equals(operatorName)) {
+
+                for (LicenseInformationInquiry license :
+                        company.getLicenseList()) {
+
+                    if (license.getLicenseNo().equals(licenseNumber)
+                            && license.isActiveLicense()) {
+
+                        return license;
+                    }
+                }
+            }
+        }
 
         for (LicenseInformationInquiry license : licenseList) {
 
             if (license.getCompanyName().equals(operatorName)
                     && license.getLicenseNo().equals(licenseNumber)
-                    && license.getLicenseStatus().equals("Active")
-                    && !license.getExpiryDate().isBefore(LocalDate.now())) {
+                    && license.isActiveLicense()) {
 
-                return true;
+                return license;
             }
         }
 
-        return false;
+        return null;
     }
 
-    @javafx.fxml.FXML
+    public boolean verifyLicense(String operatorName,
+                                 String licenseNumber) {
+
+        return findLicense(operatorName, licenseNumber) != null;
+    }
+
+    @FXML
     public void ClearOnAction(ActionEvent actionEvent) {
 
         operatorNameTextField.clear();
@@ -149,15 +198,22 @@ public class SpectrumRequestSubmissionViewController
         outputLabel.clear();
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void SubmitRequestOnAction(ActionEvent actionEvent) {
 
         String operatorName = operatorNameTextField.getText();
+
         String licenseNumber = licenseNumberTextField.getText();
+
         String frequencyBand = frequencyBandComboBox.getValue();
-        String requestedBandwidth = requestedBandwidthTextField.getText();
+
+        String requestedBandwidth =
+                requestedBandwidthTextField.getText();
+
         String coverageArea = coverageAreaTextField.getText();
+
         LocalDate requestDate = requestDateDatePicker.getValue();
+
         String purpose = purposeOfRequestTextArea.getText();
 
         if (operatorName.isEmpty()
@@ -168,7 +224,9 @@ public class SpectrumRequestSubmissionViewController
                 || requestDate == null
                 || purpose.isEmpty()) {
 
-            outputLabel.setText("Please complete all required information.");
+            outputLabel.setText(
+                    "Please complete all required information.");
+
             return;
         }
 
@@ -180,25 +238,37 @@ public class SpectrumRequestSubmissionViewController
         }
         catch (NumberFormatException e) {
 
-            outputLabel.setText("Please enter a valid bandwidth.");
+            outputLabel.setText(
+                    "Please enter a valid bandwidth.");
+
             return;
         }
 
-        if (!(bandwidth > 0) || bandwidth == Double.POSITIVE_INFINITY) {
+        if (!(bandwidth > 0)
+                || bandwidth == Double.POSITIVE_INFINITY) {
 
-            outputLabel.setText("Bandwidth must be a positive number.");
+            outputLabel.setText(
+                    "Bandwidth must be a positive number.");
+
             return;
         }
 
         if (LocalDate.now().isBefore(requestDate)) {
 
-            outputLabel.setText("Request date cannot be in the future.");
+            outputLabel.setText(
+                    "Request date cannot be in the future.");
+
             return;
         }
 
-        if (!verifyLicense(operatorName, licenseNumber)) {
+        LicenseInformationInquiry matchedLicense =
+                findLicense(operatorName, licenseNumber);
 
-            outputLabel.setText("Invalid operator name or license number.");
+        if (matchedLicense == null) {
+
+            outputLabel.setText(
+                    "Invalid operator name or license number.");
+
             return;
         }
 
@@ -213,6 +283,8 @@ public class SpectrumRequestSubmissionViewController
                         purpose
                 );
 
+        request.setLicense(matchedLicense);
+
         try {
 
             File f = new File("SpectrumRequest.bin");
@@ -220,29 +292,33 @@ public class SpectrumRequestSubmissionViewController
             FileOutputStream fos = null;
             ObjectOutputStream oos = null;
 
-            if (f.exists()) {
+            if (f.exists() && f.length() > 0) {
 
                 fos = new FileOutputStream(f, true);
+
                 oos = new AppendableObjectOutputStream(fos);
             }
             else {
 
                 fos = new FileOutputStream(f);
+
                 oos = new ObjectOutputStream(fos);
             }
 
             oos.writeObject(request);
             oos.close();
 
-            outputLabel.setText("Spectrum Request Submitted Successfully.");
+            outputLabel.setText(
+                    "Spectrum Request Submitted Successfully.");
         }
         catch (Exception e) {
 
-            outputLabel.setText("Spectrum Request Submission Failed.");
+            outputLabel.setText(
+                    "Spectrum Request Submission Failed.");
         }
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void BackToDashboardOnAction(ActionEvent actionEvent) {
 
         try {
@@ -255,15 +331,21 @@ public class SpectrumRequestSubmissionViewController
 
             Scene nextScene = new Scene(myFxmlLoader.load());
 
-            Stage currentStage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+            Stage currentStage =
+                    (Stage)((Node) actionEvent.getSource())
+                            .getScene().getWindow();
 
             currentStage.setScene(nextScene);
-            currentStage.setTitle("Telecom Operator Representative Dashboard");
+
+            currentStage.setTitle(
+                    "Telecom Operator Representative Dashboard");
+
             currentStage.show();
         }
         catch (Exception e) {
 
-            outputLabel.setText("Unable to open dashboard.");
+            outputLabel.setText(
+                    "Unable to open dashboard.");
         }
     }
 }

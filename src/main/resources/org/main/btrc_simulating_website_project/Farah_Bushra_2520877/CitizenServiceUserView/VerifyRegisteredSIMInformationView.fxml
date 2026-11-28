@@ -3,6 +3,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,49 +20,49 @@
          </font>
       </Text>
       <Line endX="764.4999389648438" endY="7.62939453125E-6" layoutX="107.0" layoutY="96.0" startX="-107.0" startY="7.62939453125E-6" />
-      <Label layoutX="36.0" layoutY="117.0" prefHeight="20.0" prefWidth="96.0" text="NID Number">
+      <Label layoutX="14.0" layoutY="117.0" prefHeight="20.0" prefWidth="96.0" text="NID Number">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="nidNumberTextField" layoutX="126.0" layoutY="114.0" />
-      <Label layoutX="321.0" layoutY="117.0" prefHeight="20.0" prefWidth="142.0" text="Mobile Number">
+      <TextField fx:id="nidNumberTextField" layoutX="104.0" layoutY="114.0" />
+      <Label layoutX="277.0" layoutY="117.0" prefHeight="20.0" prefWidth="142.0" text="Mobile Number">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="operatorNameTextField" layoutX="150.0" layoutY="182.0" />
-      <Label layoutX="36.0" layoutY="185.0" prefHeight="20.0" prefWidth="135.0" text="Operator Name">
+      <TextField fx:id="operatorNameTextField" layoutX="700.0" layoutY="114.0" />
+      <Label layoutX="592.0" layoutY="117.0" prefHeight="20.0" prefWidth="135.0" text="Operator Name">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="348.0" layoutY="186.0" prefHeight="20.0" prefWidth="135.0" text="Report ID">
+      <Label layoutX="252.0" layoutY="176.0" prefHeight="20.0" prefWidth="135.0" text="Report ID">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="reportIdTextField" layoutX="463.0" layoutY="182.0" />
-      <Label layoutX="36.0" layoutY="258.0" prefHeight="20.0" prefWidth="135.0" text="Report Reason">
+      <TextField fx:id="reportIdTextField" layoutX="381.0" layoutY="173.0" />
+      <Label layoutX="14.0" layoutY="166.0" prefHeight="20.0" prefWidth="135.0" text="Report Reason">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="368.0" layoutY="258.0" prefHeight="20.0" prefWidth="135.0" text="Report Status">
+      <Label layoutX="574.0" layoutY="176.0" prefHeight="20.0" prefWidth="135.0" text="Report Status">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="reportStatusTextField" layoutX="483.0" layoutY="255.0" />
-      <TextArea fx:id="reportReasonTextArea" layoutX="32.0" layoutY="305.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button layoutX="52.0" layoutY="572.0" mnemonicParsing="false" onAction="#CheckSIMOnAction" text="Check SIM">
+      <TextField fx:id="reportStatusTextField" layoutX="700.0" layoutY="173.0" />
+      <TextArea fx:id="reportReasonTextArea" layoutX="18.0" layoutY="196.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button layoutX="296.0" layoutY="266.0" mnemonicParsing="false" onAction="#CheckSIMOnAction" text="Check SIM">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="211.0" layoutY="572.0" mnemonicParsing="false" onAction="#SubmitReportOnAction" text="Submit Report">
+      <Button layoutX="436.0" layoutY="266.0" mnemonicParsing="false" onAction="#SubmitReportOnAction" text="Submit Report">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </Button>
       <Label fx:id="outputLabel" layoutX="405.0" layoutY="568.0" prefHeight="42.0" prefWidth="338.0">
@@ -68,11 +70,18 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <ComboBox fx:id="mobileNumberComboBox1" layoutX="444.0" layoutY="114.0" prefWidth="150.0" />
-      <Button layoutX="468.0" layoutY="654.0" mnemonicParsing="false" onAction="#BackToDashboardOnAction" text="Back To Dashboard">
+      <ComboBox fx:id="mobileNumberComboBox" layoutX="408.0" layoutY="114.0" prefWidth="150.0" />
+      <Button layoutX="620.0" layoutY="266.0" mnemonicParsing="false" onAction="#BackToDashboardOnAction" text="Back To Dashboard">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </Button>
+      <TableView fx:id="tableViewSim" layoutX="49.0" layoutY="459.0" prefHeight="200.0" prefWidth="771.0">
+        <columns>
+          <TableColumn fx:id="mobileNoTableCol" prefWidth="239.1999397277832" text="Mobile Number " />
+          <TableColumn fx:id="operatorNameTableCol" prefWidth="260.00006103515625" text="Operator Name " />
+            <TableColumn fx:id="reportStatusTableCol" prefWidth="272.7999267578125" text="Report Status" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

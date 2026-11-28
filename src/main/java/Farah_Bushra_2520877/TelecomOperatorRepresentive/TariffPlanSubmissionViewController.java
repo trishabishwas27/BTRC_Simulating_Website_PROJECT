@@ -5,42 +5,62 @@ import Farah_Bushra_2520877.BushraApplication;
 import Farah_Bushra_2520877.CitizenServiceUser.AppendableObjectOutputStream;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
-public class TariffPlanSubmissionViewController
-{
-    @javafx.fxml.FXML
+public class TariffPlanSubmissionViewController {
+
+    @FXML
     private ComboBox<String> serviceTypeComboBox;
-    @javafx.fxml.FXML
+    @FXML
     private TextField voiceCallRateTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField operatorNameTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField tariffPlanNameTextField;
-    @javafx.fxml.FXML
+    @FXML
     private ComboBox<String> planCategoryComboBox;
-    @javafx.fxml.FXML
+    @FXML
     private TextArea planDescriptionTextArea;
-    @javafx.fxml.FXML
+    @FXML
     private DatePicker effectiveDateDatePicker;
-    @javafx.fxml.FXML
+    @FXML
     private TextField smsRateTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField dataRateTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField outputLabel;
 
-    @javafx.fxml.FXML
+    @FXML
+    private TableColumn<TariffPlanSubmission, LocalDate> efffectiveTableCol;
+    @FXML
+    private TableColumn<TariffPlanSubmission, String> tariffplanNameTableCol;
+    @FXML
+    private TableColumn<TariffPlanSubmission, String> operatorNameTableCol;
+    @FXML
+    private TableColumn<TariffPlanSubmission, Float> smsRateTableCol;
+    @FXML
+    private TableColumn<TariffPlanSubmission, String> serviceTypeTableCol;
+    @FXML
+    private TableColumn<TariffPlanSubmission, Float> dataRateTableCol;
+    @FXML
+    private TableView<TariffPlanSubmission> tableViewTariff;
+    @FXML
+    private TableColumn<TariffPlanSubmission, Float> voiceRateTableCol;
+
+    private ArrayList<TariffPlanSubmission> tariffList =
+            new ArrayList<>();
+
+    @FXML
     public void initialize() {
 
         serviceTypeComboBox.getItems().addAll(
@@ -56,9 +76,77 @@ public class TariffPlanSubmissionViewController
         );
 
         outputLabel.setEditable(false);
+
+        operatorNameTableCol.setCellValueFactory(
+                new PropertyValueFactory<>("operatorName"));
+
+        tariffplanNameTableCol.setCellValueFactory(
+                new PropertyValueFactory<>("tariffPlanName"));
+
+        serviceTypeTableCol.setCellValueFactory(
+                new PropertyValueFactory<>("serviceType"));
+
+        voiceRateTableCol.setCellValueFactory(
+                new PropertyValueFactory<>("voiceCallRate"));
+
+        smsRateTableCol.setCellValueFactory(
+                new PropertyValueFactory<>("smsRate"));
+
+        dataRateTableCol.setCellValueFactory(
+                new PropertyValueFactory<>("dataRate"));
+
+        efffectiveTableCol.setCellValueFactory(
+                new PropertyValueFactory<>("effectiveDate"));
+
+        loadTariffPlans();
+        showTariffPlans();
     }
 
-    @javafx.fxml.FXML
+    public void loadTariffPlans() {
+
+        tariffList.clear();
+
+        File f = new File("TariffPlanSubmission.bin");
+
+        if (!f.exists() || f.length() == 0) {
+            return;
+        }
+
+        try {
+
+            FileInputStream fis = new FileInputStream(f);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+
+            try {
+
+                while (true) {
+
+                    TariffPlanSubmission plan =
+                            (TariffPlanSubmission) ois.readObject();
+
+                    tariffList.add(plan);
+                }
+            }
+            catch (EOFException e) {
+                // End of file
+            }
+            finally {
+                ois.close();
+            }
+        }
+        catch (Exception e) {
+
+            outputLabel.setText("Unable to load saved tariff plans.");
+        }
+    }
+
+    public void showTariffPlans() {
+
+        tableViewTariff.getItems().clear();
+        tableViewTariff.getItems().addAll(tariffList);
+    }
+
+    @FXML
     public void ClearOnAction(ActionEvent actionEvent) {
 
         operatorNameTextField.clear();
@@ -73,7 +161,7 @@ public class TariffPlanSubmissionViewController
         outputLabel.clear();
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void SubmitTariffPlanOnAction(ActionEvent actionEvent) {
 
         String operatorName = operatorNameTextField.getText();
@@ -98,7 +186,8 @@ public class TariffPlanSubmissionViewController
                 || effectiveDate == null
                 || planDescription.isEmpty()) {
 
-            outputLabel.setText("Please complete all required information.");
+            outputLabel.setText(
+                    "Please complete all required information.");
             return;
         }
 
@@ -114,7 +203,8 @@ public class TariffPlanSubmissionViewController
         }
         catch (Exception e) {
 
-            outputLabel.setText("Please enter valid numeric rates.");
+            outputLabel.setText(
+                    "Please enter valid numeric rates.");
             return;
         }
 
@@ -125,7 +215,8 @@ public class TariffPlanSubmissionViewController
                 || smsRate == Float.POSITIVE_INFINITY
                 || dataRate == Float.POSITIVE_INFINITY) {
 
-            outputLabel.setText("Rates must be valid non-negative numbers.");
+            outputLabel.setText(
+                    "Rates must be valid non-negative numbers.");
             return;
         }
 
@@ -149,7 +240,7 @@ public class TariffPlanSubmissionViewController
             FileOutputStream fos = null;
             ObjectOutputStream oos = null;
 
-            if (f.exists()) {
+            if (f.exists() && f.length() > 0) {
 
                 fos = new FileOutputStream(f, true);
                 oos = new AppendableObjectOutputStream(fos);
@@ -163,15 +254,21 @@ public class TariffPlanSubmissionViewController
             oos.writeObject(plan);
             oos.close();
 
-            outputLabel.setText("Tariff Plan Submitted Successfully.");
+            tariffList.add(plan);
+
+            showTariffPlans();
+
+            outputLabel.setText(
+                    "Tariff Plan Submitted Successfully.");
         }
         catch (Exception e) {
 
-            outputLabel.setText("Tariff Plan Submission Failed.");
+            outputLabel.setText(
+                    "Tariff Plan Submission Failed.");
         }
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void BackToDashboardOnAction(ActionEvent actionEvent) {
 
         try {
@@ -184,10 +281,14 @@ public class TariffPlanSubmissionViewController
 
             Scene nextScene = new Scene(myFxmlLoader.load());
 
-            Stage currentStage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+            Stage currentStage =
+                    (Stage)((Node) actionEvent.getSource())
+                            .getScene().getWindow();
 
             currentStage.setScene(nextScene);
-            currentStage.setTitle("Telecom Operator Representative Dashboard");
+            currentStage.setTitle(
+                    "Telecom Operator Representative Dashboard");
+
             currentStage.show();
         }
         catch (Exception e) {

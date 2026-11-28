@@ -6,6 +6,7 @@ public class TelecomOperatorRepresentive extends User {
 
     private String companyName;
     private String registrationNumber;
+    private TelecomCompany company;
 
     public TelecomOperatorRepresentive(String userId,
                                        String name,
@@ -13,6 +14,7 @@ public class TelecomOperatorRepresentive extends User {
                                        String registrationNumber) {
 
         super(userId, name);
+
         this.companyName = companyName;
         this.registrationNumber = registrationNumber;
     }
@@ -22,7 +24,9 @@ public class TelecomOperatorRepresentive extends User {
     }
 
     public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+        if (company == null) {
+            this.companyName = companyName;
+        }
     }
 
     public String getRegistrationNumber() {
@@ -30,11 +34,55 @@ public class TelecomOperatorRepresentive extends User {
     }
 
     public void setRegistrationNumber(String registrationNumber) {
-        this.registrationNumber = registrationNumber;
+        if (company == null) {
+            this.registrationNumber = registrationNumber;
+        }
+    }
+
+    public TelecomCompany getCompany() {
+        return company;
+    }
+
+    public void setCompany(TelecomCompany company) {
+
+        if (this.company == company) {
+            return;
+        }
+
+        TelecomCompany oldCompany = this.company;
+
+        this.company = company;
+
+        if (oldCompany != null) {
+            oldCompany.removeRepresentative(this);
+        }
+
+        if (company != null) {
+
+            this.companyName = company.getCompanyName();
+
+            this.registrationNumber =
+                    company.getRegistrationNumber();
+
+            company.addRepresentative(this);
+        }
+        else {
+            this.companyName = null;
+            this.registrationNumber = null;
+        }
     }
 
     @Override
     public String getUserType() {
         return "Telecom Operator Representative";
+    }
+
+    @Override
+    public String toString() {
+        return "TelecomOperatorRepresentive{" +
+                "companyName='" + companyName + '\'' +
+                ", registrationNumber='" +
+                registrationNumber + '\'' +
+                '}';
     }
 }

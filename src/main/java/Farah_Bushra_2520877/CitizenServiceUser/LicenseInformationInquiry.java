@@ -4,14 +4,21 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class LicenseInformationInquiry implements Serializable {
-    private String licenseNo;
+
+    private final String licenseNo;
     private String companyName;
     private String licenseType;
     private LocalDate issueDate;
     private LocalDate expiryDate;
     private String licenseStatus;
 
-    public LicenseInformationInquiry(String licenseNo, String companyName, String licenseType, LocalDate issueDate, LocalDate expiryDate, String licenseStatus) {
+    public LicenseInformationInquiry(String licenseNo,
+                                     String companyName,
+                                     String licenseType,
+                                     LocalDate issueDate,
+                                     LocalDate expiryDate,
+                                     String licenseStatus) {
+
         this.licenseNo = licenseNo;
         this.companyName = companyName;
         this.licenseType = licenseType;
@@ -22,10 +29,6 @@ public class LicenseInformationInquiry implements Serializable {
 
     public String getLicenseNo() {
         return licenseNo;
-    }
-
-    public void setLicenseNo(String licenseNo) {
-        this.licenseNo = licenseNo;
     }
 
     public String getCompanyName() {
@@ -66,5 +69,12 @@ public class LicenseInformationInquiry implements Serializable {
 
     public void setLicenseStatus(String licenseStatus) {
         this.licenseStatus = licenseStatus;
+    }
+
+    public boolean isActiveLicense() {
+
+        return "Active".equals(licenseStatus)
+                && expiryDate != null
+                && !expiryDate.isBefore(LocalDate.now());
     }
 }

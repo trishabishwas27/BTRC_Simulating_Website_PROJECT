@@ -1,9 +1,12 @@
 package Farah_Bushra_2520877.TelecomOperatorRepresentive;
 
+import Farah_Bushra_2520877.CitizenServiceUser.LicenseInformationInquiry;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
 public class SpectrumRequestSubmission implements Serializable {
+
     private String operatorName;
     private String licenseNumber;
     private String frequencyBand;
@@ -12,7 +15,16 @@ public class SpectrumRequestSubmission implements Serializable {
     private LocalDate requestDate;
     private String purpose;
 
-    public SpectrumRequestSubmission(String operatorName, String licenseNumber, String frequencyBand, String requestedBandwidth, String coverageArea, LocalDate requestDate, String purpose) {
+    private LicenseInformationInquiry license;
+
+    public SpectrumRequestSubmission(String operatorName,
+                                     String licenseNumber,
+                                     String frequencyBand,
+                                     String requestedBandwidth,
+                                     String coverageArea,
+                                     LocalDate requestDate,
+                                     String purpose) {
+
         this.operatorName = operatorName;
         this.licenseNumber = licenseNumber;
         this.frequencyBand = frequencyBand;
@@ -20,6 +32,20 @@ public class SpectrumRequestSubmission implements Serializable {
         this.coverageArea = coverageArea;
         this.requestDate = requestDate;
         this.purpose = purpose;
+    }
+
+    public LicenseInformationInquiry getLicense() {
+        return license;
+    }
+
+    public void setLicense(LicenseInformationInquiry license) {
+
+        this.license = license;
+
+        if (license != null) {
+            this.licenseNumber = license.getLicenseNo();
+            this.operatorName = license.getCompanyName();
+        }
     }
 
     public String getOperatorName() {
@@ -80,6 +106,7 @@ public class SpectrumRequestSubmission implements Serializable {
 
     @Override
     public String toString() {
+
         return "SpectrumRequestSubmission{" +
                 "operatorName='" + operatorName + '\'' +
                 ", licenseNumber='" + licenseNumber + '\'' +

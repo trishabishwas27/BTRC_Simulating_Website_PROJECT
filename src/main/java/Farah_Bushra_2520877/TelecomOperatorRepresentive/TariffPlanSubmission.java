@@ -1,4 +1,3 @@
-
 package Farah_Bushra_2520877.TelecomOperatorRepresentive;
 
 import java.io.Serializable;
@@ -10,14 +9,20 @@ public class TariffPlanSubmission implements Serializable {
     private String tariffPlanName;
     private String serviceType;
     private String planCategory;
-    private TariffPlanRates rates;
+
+    private final TariffPlanRates rates;
+
     private LocalDate effectiveDate;
     private String planDescription;
 
-    public TariffPlanSubmission(String operatorName, String tariffPlanName,
-                                String serviceType, String planCategory,
-                                float voiceCallRate, float smsRate,
-                                float dataRate, LocalDate effectiveDate,
+    public TariffPlanSubmission(String operatorName,
+                                String tariffPlanName,
+                                String serviceType,
+                                String planCategory,
+                                float voiceCallRate,
+                                float smsRate,
+                                float dataRate,
+                                LocalDate effectiveDate,
                                 String planDescription) {
 
         this.operatorName = operatorName;
@@ -26,7 +31,9 @@ public class TariffPlanSubmission implements Serializable {
         this.planCategory = planCategory;
 
         this.rates = new TariffPlanRates(
-                voiceCallRate, smsRate, dataRate
+                voiceCallRate,
+                smsRate,
+                dataRate
         );
 
         this.effectiveDate = effectiveDate;
